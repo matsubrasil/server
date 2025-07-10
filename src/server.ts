@@ -1,4 +1,5 @@
-import { fastifyCors } from '@fastify/cors'
+//import { fastifyCors } from '@fastify/cors'
+import cors from '@fastify/cors'
 import { fastify } from 'fastify'
 import {
   serializerCompiler,
@@ -10,8 +11,8 @@ import { getRoomsRoute } from './http/routes/get-rooms.ts'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
-app.register(fastifyCors, {
-  origin: 'http://localhost:5173',
+app.register(cors, {
+  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
 })
 
 app.setSerializerCompiler(serializerCompiler)
