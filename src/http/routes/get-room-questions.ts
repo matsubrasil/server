@@ -16,7 +16,9 @@ export const getRoomQuestionsRoute: FastifyPluginCallbackZod = (app) => {
     },
     async (request) => {
       const { roomId } = request.params
-      // console.log(roomId)
+      // biome-ignore lint/suspicious/noConsole: teste
+      console.log('getRoomQuestionsRoute', roomId)
+
       const result = await db
         .select({
           id: schema.questions.id,
